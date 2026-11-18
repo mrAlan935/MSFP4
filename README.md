@@ -1,5 +1,6 @@
 [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mrAlan935/MSFP4)
-# Práctica 4 — Modelado y control del sistema endocrino
+
+# Práctica 4 (5.6) — Modelado y control del sistema endocrino
 
 Repositorio académico de la asignatura **Modelado de Sistemas Fisiológicos**, correspondiente al programa de **Ingeniería Biomédica** del Tecnológico Nacional de México / Instituto Tecnológico de Tijuana. Esta práctica integra analogía eléctrica de un sistema fisiológico, análisis matemático, estabilidad y error en estado estacionario, simulación en MATLAB/Simulink/Simscape, diseño de un controlador PID con retroalimentación negativa y reproducción independiente en Python.
 
@@ -114,7 +115,7 @@ El esquema del análisis manuscrito confirma esta topología. En él, $F_e(t)$ d
 | $L$ | Inductancia | Hormona receptora | $100\,\mathrm{mH}$ | $100\,\mathrm{mH}$ |
 | $C$ | Capacitancia | Plasma sanguíneo | $1\,\mu\mathrm{F}$ | $1\,\mathrm{mF}$ |
 
-![Analogía eléctrica del sistema endocrino](biorender_endocrino.png)
+![Analogía eléctrica del sistema endocrino](Biorender.png)
 
 *Figura 1. Analogía entre el sistema endocrino (eje neurona–glándula tiroides–sangre–órganos blanco) y el circuito eléctrico equivalente. Elaborada en BioRender.*
 
@@ -195,21 +196,15 @@ Las expresiones normalizadas coinciden con los bloques de función de transferen
 
 ### 5. Desarrollo manuscrito
 
-El desarrollo analítico completo se conserva en [`Análisis Matemático P4.pdf`](Análisis Matemático P4.pdf) y se reproduce a continuación.
+El desarrollo analítico completo se conserva en [`Análisis Matemático P4.pdf`](An%C3%A1lisis%20Matem%C3%A1tico%20P4.pdf) y se reproduce a continuación.
 
 **Página 1.** Circuito, parámetros de *Control* y *Caso*, ecuaciones de la rama, función de transferencia y ganancia en continua del *Control*.
-
-![Análisis matemático, página 1](Analisis_P4_p1.jpg)
 
 > **Nota de revisión:** en esta página, el denominador del *Caso* aparece como $0.1s^2+1.1s+2000$ (normalizado, $s^2+11s+20000$). El coeficiente correcto es $1000.1$ (normalizado, $10\,001$), tal como se usa en la página 3, en el script y en Simulink. Conviene corregir el manuscrito.
 
 **Página 2.** Modelo de ecuaciones integro-diferenciales por mallas (Ec. 1 a Ec. 3).
 
-![Análisis matemático, página 2](Analisis_P4_p2.jpg)
-
 **Página 3.** Ganancia en continua del *Caso*, estabilidad (polos de *Control* y *Caso*) y bosquejo de la respuesta.
-
-![Análisis matemático, página 3](Analisis_P4_p3.jpg)
 
 [Volver al contenido](#contenido)
 
@@ -284,7 +279,7 @@ end
 <a id="matlab"></a>
 ## Implementación en MATLAB, Simulink y Simscape
 
-El modelo [`sistema.slx`](sistema.slx) contiene dos subsistemas, **Sistema Control** y **Sistema Caso**, que difieren en $C$ y $R_2$. Cada uno se implementa de tres formas equivalentes:
+El modelo `sistema.slx` contiene dos subsistemas, **Sistema Control** y **Sistema Caso**, que difieren en $C$ y $R_2$. Cada uno se implementa de tres formas equivalentes:
 
 | Implementación | Etiqueta | Descripción |
 |---|---|---|
@@ -296,7 +291,7 @@ El subsistema **Caso** incluye además un bloque `PID Controller` (salida **PID*
 
 ### Ejecución desde el cuaderno MATLAB
 
-El cuaderno [`obregon23212221_2.mlx`](obregon23212221_2.mlx) configura y ejecuta la simulación:
+El cuaderno `obregon23212221_2.mlx` configura y ejecuta la simulación:
 
 ```matlab
 tend = '11';
@@ -392,7 +387,7 @@ Gracias a la acción integral, el *Tratamiento* alcanza el mismo valor final que
 <a id="python"></a>
 ## Reproducción en Python
 
-El script [`Obregon23212221.py`](Obregon23212221.py) usa `numpy`, `control` y `matplotlib`. Sus apartados son:
+El script `Obregon23212221.py` usa `numpy`, `control` y `matplotlib`. Sus apartados son:
 
 1. **Datos generales:** vector temporal ($0$–$10\,\mathrm{s}$, $\Delta t=10^{-3}\,\mathrm{s}$) y entrada escalón `u = np.ones(N)`.
 2. **Planta:** función `sis(C, R2, nombre)` con $R_1=1\,\mathrm{k}\Omega$ y $L=100\,\mathrm{mH}$; se crean `sysControl` ($C=1\,\mu\mathrm{F}$, $R_2=100\,\mathrm{k}\Omega$) y `sysCaso` ($C=1\,\mathrm{mF}$, $R_2=1\,\mathrm{k}\Omega$).
@@ -418,8 +413,6 @@ python Obregon23212221.py
 ## Comprobación experimental con osciloscopio
 
 Se construyó el circuito equivalente en laboratorio y se registró su respuesta a un escalón con un osciloscopio digital (OWON).
-
-![Captura del osciloscopio](osciloscopio_P4.jpg)
 
 *Figura 2. Respuesta medida en el circuito físico ante un escalón de entrada.*
 
@@ -460,19 +453,15 @@ La respuesta física concuerda con la simulación en niveles y rapidez. Las dife
 
 ### Figura de MATLAB/Simulink
 
-![Respuesta Control y Caso en MATLAB](Control_y_caso_matlab.png)
-
 ### Figura de Python
-
-![Respuesta Control y Caso en Python](Control_caso_python4.png)
 
 Archivos de resultados:
 
 | Herramienta | Archivo |
 |---|---|
-| MATLAB/Simulink | [`Control_y_caso.matlab.pdf`](Control_y_caso.matlab.pdf) (generado como `Control y caso.matlab.pdf`) |
+| MATLAB/Simulink | [`Control y caso.matlab.pdf`](Control%20y%20caso.matlab.pdf) |
 | Python | [`Control_caso_python4.pdf`](Control_caso_python4.pdf) |
-| Laboratorio | [`osciloscopio_P4.jpg`](osciloscopio_P4.jpg) |
+| Laboratorio | `osciloscopio_P4.jpg` |
 
 ### Lectura de las figuras
 
@@ -586,19 +575,19 @@ flowchart TD
 .
 ├── README.md                          # Reporte y guía de reproducción
 ├── CITATION.cff                       # Datos de citación (por agregar)
-├── Analisis_Matematico_P4.pdf         # Desarrollo analítico manuscrito
+├── Análisis Matemático P4.pdf         # Desarrollo analítico manuscrito
 ├── Analisis_P4_p1.jpg                 # Páginas del manuscrito (vista previa)
 ├── Analisis_P4_p2.jpg
 ├── Analisis_P4_p3.jpg
 ├── obregon23212221_2.mlx              # Cuaderno MATLAB
 ├── sistema.slx                        # Modelo Simulink/Simscape
 ├── Obregon23212221.py                 # Implementación en Python
-├── Control_y_caso.matlab.pdf          # Figura exportada desde MATLAB
+├── Control y caso.matlab.pdf          # Figura exportada desde MATLAB
 ├── Control_y_caso_matlab.png          # Vista previa para el README
 ├── Control_caso_python4.pdf           # Figura exportada desde Python
 ├── Control_caso_python4.png           # Vista previa para el README
 ├── osciloscopio_P4.jpg                # Captura del circuito físico
-└── biorender_endocrino.png            # Figura de la analogía (BioRender)
+└── Biorender.png                      # Figura de la analogía (BioRender)
 ```
 
 **Criterio de nombres:** los archivos conservan los nombres de las fuentes entregadas. Si se reorganizan en subcarpetas, actualizar las rutas del README.
