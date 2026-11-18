@@ -195,7 +195,7 @@ Las expresiones normalizadas coinciden con los bloques de función de transferen
 
 ### 5. Desarrollo manuscrito
 
-El desarrollo analítico completo se conserva en [`Analisis_Matematico_P4.pdf`](Analisis_Matematico_P4.pdf) y se reproduce a continuación.
+El desarrollo analítico completo se conserva en [`Análisis Matemático P4.pdf`](Análisis Matemático P4.pdf) y se reproduce a continuación.
 
 **Página 1.** Circuito, parámetros de *Control* y *Caso*, ecuaciones de la rama, función de transferencia y ganancia en continua del *Control*.
 
