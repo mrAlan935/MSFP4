@@ -1,0 +1,23 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: 'Practica 4: Modelado y control del sistema endócrino'
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Alan
+    family-names: Obregon
+    email: l23212221@tectijuana.edu.mx
+    affiliation: TecNM/ITT
+repository-code: 'https://github.com/mrAlan935/MSFP4'
+keywords:
+  - sistema endocrino
+  - controlador PID
+  - circuito RLC
+  - Simulink
+license: BSD-2-Clause
+version: '1.0'
+date-released: '2026-11-17'
